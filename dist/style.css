@@ -554,6 +554,14 @@ video {
   --tw-contain-style:  ;
 }
 
+.m-20 {
+  margin: 5rem;
+}
+
+.m-10 {
+  margin: 2.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -574,6 +582,11 @@ video {
   margin-bottom: 1rem;
 }
 
+.mx-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -584,6 +597,10 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mr-20 {
+  margin-right: 5rem;
 }
 
 .block {
@@ -790,8 +807,39 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:m-10 {
+    margin: 2.5rem;
+  }
+
+  .sm\:m-20 {
+    margin: 5rem;
+  }
+
+  .sm\:mx-10 {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  .sm\:ml-10 {
+    margin-left: 2.5rem;
+  }
+
   .sm\:p-8 {
     padding: 2rem;
+  }
+
+  .sm\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .sm\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .sm\:pl-10 {
+    padding-left: 2.5rem;
   }
 
   .sm\:text-xl {
