@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add blog</title>
     <link rel="stylesheet" href="/dist/style.css">
+    <script src="https://kit.fontawesome.com/2475799efc.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -28,17 +29,62 @@
                     <div class="w-full lg:w-3/4 xl:w-2/3 text-start">
                         <p>ფოტოს ატვირთვა</p>
                         <div id="uploadArea" class="flex flex-col justify-center h-60 upload-area bg-gray-200 p-4 rounded-lg text-center cursor-pointer border-dashed border-2 border-gray-400"
-                            ondragover="event.preventDefault(); document.getElementById('uploadArea').classList.add('dragover', 'bg-gray-100', 'border-indigo-500')"
+                             ondragover="event.preventDefault(); document.getElementById('uploadArea').classList.add('dragover', 'bg-gray-100', 'border-indigo-500')"
                              ondragleave="document.getElementById('uploadArea').classList.remove('dragover', 'bg-gray-100', 'border-indigo-500')"
                              ondrop="handleDrop(event)">
-                         <p class="text-lg align-middle">ჩააგდეთ ფაილი აქ ან <span class="font-bold underline">აირჩიეთ ფაილი</span></p>
-                         <input id="fileInput" type="file" class="hidden" accept="image/*" onchange="previewImage(event)">
-                       </div>
-                        <div id="imagePreview" class="mt-4"></div>
+                            <div id="imagePreview" class="text-center">
+                                <i id="imageIcon" class="fas fa-image text-2xl"></i>
+                                <span id="fileName" class="text-lg"></span>
+                                <button id="removeButton" class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-times"></i></button>
+                            </div>
+                            <p id="uploadText" class="text-lg align-middle">ჩააგდეთ ფაილი აქ ან <span class="font-bold underline">აირჩიეთ ფაილი</span></p>
+                            <input id="fileInput" type="file" class="hidden" accept="image/*" onchange="previewImage(event)">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            
+            <script>
+                document.getElementById('imageIcon').style.display = 'none';
+                document.getElementById('removeButton').style.display = 'none';
+                
+                function previewImageFromFile(file) {
+                    const imageIcon = document.getElementById('imageIcon');
+                    const fileName = document.getElementById('fileName');
+                    const removeButton = document.getElementById('removeButton');
+                    const uploadText = document.getElementById('uploadText');
+            
+                    imageIcon.style.display = 'inline-block';
+                    fileName.textContent = file.name;
+                    removeButton.style.display = 'inline-block';
+                    uploadText.style.display = 'none';
+                }
+            
+                function handleDrop(event) {
+                    event.preventDefault();
+                    document.getElementById('uploadArea').classList.remove('dragover');
+                    const file = event.dataTransfer.files[0];
+                    previewImageFromFile(file);
+                }
+            
+                function previewImage(event) {
+                    const file = event.target.files[0];
+                    previewImageFromFile(file);
+                }
+            
+                // Remove the uploaded image when the remove button is clicked
+                document.getElementById('removeButton').addEventListener('click', function() {
+                    const imageIcon = document.getElementById('imageIcon');
+                    const fileName = document.getElementById('fileName');
+                    const removeButton = document.getElementById('removeButton');
+                    const uploadText = document.getElementById('uploadText');
+            
+                    imageIcon.style.display = 'none';
+                    fileName.textContent = '';
+                    removeButton.style.display = 'none';
+                    uploadText.style.display = 'block';
+                    document.getElementById('fileInput').value = ''; // Clear the file input
+                });
+            </script>
 </body>
 </html>
