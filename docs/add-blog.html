@@ -8,6 +8,19 @@
     <script src="https://kit.fontawesome.com/2475799efc.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <style>
+        .placeholder-top-left::placeholder {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translate(0, 0);
+          padding: 10px 15px;
+          font-size: 1rem;
+        }
+        #description {
+          position: relative;
+        }
+      </style>
     <header>
         <nav class="bg-white shadow h-20 ">
             <div class=" flex items-center justify-center h-full">
@@ -46,19 +59,39 @@
                                   <label class="block text-base text-gray-700 font-bold mb-3" for="author">
                                     ავტორი
                                   </label>
-                                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="gauthor" type="text" placeholder="ჯუმბერი">
+                                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="author" type="text" placeholder="ჯუმბერი">
                                   <p class="text-gray-500 text-xs italic">მინიმუმ 4 სიმბოლო</p>
                                   <p class="text-gray-500 text-xs italic">მინიმუმ 2 სიტყვა</p>
                                   <p class="text-gray-500 text-xs italic">მხოლოდ ქართული სიმბოლოები</p>
                                 </div>
-                                <div class="w-full md:w-1/2 px-3">
-                                  <label class="block text-base text-gray-700 font-bold mb-3" for="description">
-                                    აღწერა
+                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                  <label class="block text-base text-gray-700 font-bold mb-3" for="title">
+                                    სათაური
                                   </label>
-                                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" type="text" placeholder="ბლა ბლა">
+                                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="title" type="text" placeholder="ბლა ბლა">
                                   <p class="text-gray-500 text-xs italic">მინიმუმ 4 სიმბოლო</p>
                                 </div>
-                              </div>
+                                <div class="w-full px-3 mt-6 h-44 mb-6 md:mb-20">
+                                    <label class="block text-base text-gray-700 font-bold mb-3 leading-tight " for="description">აღწერა</label>
+                                    <input class="placeholder-top-left h-full appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500" id="description" placeholder="შეიყვანე აღწერა" type="text">
+                                    <p class="text-gray-500 text-xs italic">მინიმუმ 2 სიმბოლო</p>
+                                </div>
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label class="block text-base text-gray-700 font-bold mb-3" for="date">
+                                            თარიღი
+                                        </label>
+                                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="date" type="date">
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label class="block text-base text-gray-700 font-bold mb-3" for="category">კატეგორია</label>
+                                        <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="category" id="category">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="mercedes">Mercedes</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                    </div>
+                            </div>
                         </form>
                     </div>
                 </div>
