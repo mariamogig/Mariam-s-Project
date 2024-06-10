@@ -40,24 +40,50 @@
                             <p id="uploadText" class="text-lg align-middle">ჩააგდეთ ფაილი აქ ან <span class="font-bold underline">აირჩიეთ ფაილი</span></p>
                             <input id="fileInput" type="file" class="hidden" accept="image/*" onchange="previewImage(event)">
                         </div>
+                        <form action="">
+                            <div class="flex flex-wrap -mx-3 mb-6 mt-6">
+                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                  <label class="block text-base text-gray-700 font-bold mb-3" for="author">
+                                    ავტორი
+                                  </label>
+                                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="gauthor" type="text" placeholder="ჯუმბერი">
+                                  <p class="text-gray-500 text-xs italic">მინიმუმ 4 სიმბოლო</p>
+                                  <p class="text-gray-500 text-xs italic">მინიმუმ 2 სიტყვა</p>
+                                  <p class="text-gray-500 text-xs italic">მხოლოდ ქართული სიმბოლოები</p>
+                                </div>
+                                <div class="w-full md:w-1/2 px-3">
+                                  <label class="block text-base text-gray-700 font-bold mb-3" for="description">
+                                    აღწერა
+                                  </label>
+                                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" type="text" placeholder="ბლა ბლა">
+                                  <p class="text-gray-500 text-xs italic">მინიმუმ 4 სიმბოლო</p>
+                                </div>
+                              </div>
+                        </form>
                     </div>
                 </div>
+                
             </div>
             
             <script>
                 document.getElementById('imageIcon').style.display = 'none';
                 document.getElementById('removeButton').style.display = 'none';
                 
-                function previewImageFromFile(file) {
+                function previewImageFromFile(file){
                     const imageIcon = document.getElementById('imageIcon');
                     const fileName = document.getElementById('fileName');
                     const removeButton = document.getElementById('removeButton');
-                    const uploadText = document.getElementById('uploadText');
-            
+                    const uploadText = document.getElementById('uploadText')
+
                     imageIcon.style.display = 'inline-block';
                     fileName.textContent = file.name;
                     removeButton.style.display = 'inline-block';
-                    uploadText.style.display = 'none';
+                    uploadText.style.display = 'none'
+
+                    if(!file.type.startsWith('image/')){
+                        alert('Only images are allowed!');
+                        return;
+                    }
                 }
             
                 function handleDrop(event) {
