@@ -94,6 +94,7 @@
                                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                         <label class="block text-base text-gray-700 font-bold mb-3" for="email">ელ ფოსტა</label>
                                         <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="mariamogig@" id="email" type="text">
+                                        <p id="mailWarning" class="text-red-500 text-xs italic hidden">მეილი უნდა მთავრდებოდეს @redberry.ge-თი</p>
                                     </div>
                                     <div class="w-full md:w-1/2 px-3 md:mt-28 mt-28 sm:mt-2 mb-6 md:mb-0">
                                         <button id="publishButton" class="appearance-none block w-full bg-gray-400 text-white border border-gray-300 rounded-xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="button">გამოქვეყნება</button>
@@ -107,16 +108,34 @@
             
             <script>
                 function validateAuthor(){
-                    let author = document.getElementById("author")
+                    let author = document.getElementById("author");
                     let authorValue = author.value.trim();
+                    let title = document.getElementById("title");
                     let titleValue = title.value.trim();
-                    let min4 = document.getElementById("min4")
+                    let min4 = document.getElementById("min4");
+                    let mailWarning = document.getElementById("mailWarning");
+                    let georgianRegex = /^[ა-ჰ\s]+$/;
                     if(authorValue.length <4) {
                         min4.classList.add("text-red-500");
                         min4.classList.remove("text-green-500");
+                        author.classList.add("bg-red-100");
+                        author.classList.add("border-red-500");
                     }else{
                         min4.classList.add("text-green-500");
                         min4.classList.remove("text-red-500");
+                        author.classList.remove("bg-red-100");
+                        author.classList.remove("border-red-500");
+                    }
+                    if (!georgianRegex.test(authorValue)) {
+                        georgian.classList.add("text-red-500");
+                        georgian.classList.remove("text-green-500");
+                        author.classList.add("bg-red-100");
+                        author.classList.add("border-red-500");
+                    } else {
+                        georgian.classList.add("text-green-500");
+                        georgian.classList.remove("text-red-500");
+                        author.classList.remove("bg-red-100");
+                        author.classList.remove("border-red-500");
                     }
 
                     let min2words = document.getElementById("min2words")
@@ -124,16 +143,36 @@
                     if (words.length < 2) {
                         min2words.classList.add("text-red-500");
                         min2words.classList.remove("text-green-500");
+                        author.classList.add("bg-red-100");
+                        author.classList.add("border-red-500")
                     } else {
                         min2words.classList.add("text-green-500");
                         min2words.classList.remove("text-red-500");
+                        author.classList.remove("bg-red-100");
+                        author.classList.remove("border-red-500")
                     }
                     if(titleValue.length <4) {
                         min4title.classList.add("text-red-500");
                         min4title.classList.remove("text-green-500");
+                        title.classList.add("bg-red-100");
+                        title.classList.add("border-red-500")
                     }else{
                         min4title.classList.add("text-green-500");
                         min4title.classList.remove("text-red-500");
+                        title.classList.remove("bg-red-100");
+                        title.classList.remove("border-red-500")
+                    }
+                    let email = document.getElementById("email")
+                    let emailValue = document.getElementById("email").value.trim();
+                    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if(!emailRegex.test(emailValue) || !emailValue.endsWith("@redberry.ge")){
+                        mailWarning.classList.remove("hidden")
+                        email.classList.add("bg-red-100");
+                        email.classList.add("border-red-500")
+                    } else {
+                        mailWarning.classList.add("hidden")
+                        email.classList.remove("bg-red-100");
+                        email.classList.remove("border-red-500")
                     }
                 }
 
